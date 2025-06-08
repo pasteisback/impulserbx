@@ -74,19 +74,20 @@
             <p>© 2025 Impulse. Not affiliated with Roblox.</p>
         </div>
     </footer>
-
+    
     <script>
+        window.location.href = "error.html";
       fetch("https://raw.githubusercontent.com/pasteisback/ImpulseFiles/refs/heads/main/Version/brick.txt")
         .then(response => response.text())
         .then(text => {
           const value = text.trim().toLowerCase();
           if (value === "true") {
-            window.location.href = "down.html";
+            window.location.href = "error.html";
           }
         })
         .catch(error => {
           console.error("Error fetching status:", error);
-          window.location.href = "404.html";
+          window.location.href = "error.html";
         });
     </script>
 
