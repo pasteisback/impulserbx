@@ -12,17 +12,8 @@
         const downloadUrl = (await response.text()).trim();
         if (!downloadUrl) throw new Error("Empty URL in download.txt");
 
-        const a = document.createElement("a");
-        a.href = downloadUrl;
-        a.target = "_blank";
-        a.rel = "noopener";
-
-        const filename = downloadUrl.split("/").pop().split("?")[0];
-        a.download = filename;
-
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+        // Redirect to the URL to let the browser handle it
+        window.location.href = downloadUrl;
       } catch (error) {
         console.error("Download failed:", error);
         alert("Unable to download the file. Please check the link or try again later.");
