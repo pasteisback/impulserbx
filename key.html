@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Impulse Key System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    #box {
+      background: #1f1f1f;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px #000;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    #key {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #00ff88;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <h2>Impulse Key System</h2>
+    <p id="status">Verifying...</p>
+    <button id="lootBtn" style="display:none;">Get Key via LootLinks</button>
+    <p id="key"></p>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const hwid = urlParams.get("hwid");
+    const auth = urlParams.get("auth");
+
+    const lootLink = "https://lootlinks.net/some-offer-wall-link"; // replace with your real LootLinks
+
+    const status = document.getElementById("status");
+    const lootBtn = document.getElementById("lootBtn");
+    const keyBox = document.getElementById("key");
+
+    if (!hwid) {
+      status.textContent = "Invalid access. HWID missing.";
+    } else if (auth === "bypass") {
+      status.textContent = "Bypass detected. No key for you.";
+      keyBox.textContent = "key: bypass detected";
+    } else if (auth === "complete") {
+      status.textContent = "Generating key...";
+      fetch("/.netlify/functions/generate_key?hwid=" + hwid)
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === "success") {
+            status.textContent = "Key generated!";
+            keyBox.textContent = "key: " + data.key;
+          } else {
+            status.textContent = "Key error.";
+            keyBox.textContent = "Error: " + (data.reason || "Unknown");
+          }
+        })
+        .catch(err => {
+          status.textContent = "Network error.";
+          keyBox.textContent = "Error: " + err;
+        });
+    } else {
+      status.textContent = "Click below to get your key.";
+      lootBtn.style.display = "block";
+    }
+
+    lootBtn.onclick = () => {
+      // Simulate redirect — in real use, LootLinks should redirect back to:
+      // https://impulserbx.netlify.app/key.html?hwid=XYZ&auth=complete
+      window.location.href = lootLink + "?redirect=" + encodeURIComponent(
+        "https://impulserbx.netlify.app/key.html?hwid=" + hwid + "&auth=complete"
+      );
+    };
+  </script>
+</body>
+</html>
