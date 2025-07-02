@@ -76,13 +76,12 @@
     </footer>
     
     <script>
-        window.location.href = "v2.html";
       fetch("https://raw.githubusercontent.com/pasteisback/ImpulseFiles/refs/heads/main/Version/brick.txt")
         .then(response => response.text())
         .then(text => {
           const value = text.trim().toLowerCase();
           if (value === "true") {
-            window.location.href = "v2.html";
+            window.location.href = "down.html";
           }
         })
         .catch(error => {
