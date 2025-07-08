@@ -94,6 +94,10 @@
             color: var(--lighter);
         }
         
+        .category-header span {
+            font-size: 1.5rem;
+        }
+        
         .category-content {
             padding: 1.5rem;
             display: none;
@@ -142,6 +146,7 @@
             font-size: 0.9rem;
             margin-top: 0.8rem;
             overflow-x: auto;
+            position: relative;
         }
         
         .copy-btn {
@@ -154,6 +159,7 @@
             font-size: 0.8rem;
             margin-top: 0.5rem;
             float: right;
+            transition: background-color 0.2s;
         }
         
         .copy-btn:hover {
@@ -353,6 +359,104 @@
                     </div>
                     <div class="function-example">
                         <code>local discordLink = Impulse.discord()<br>print("Join our Discord:", discordLink)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Input Functions -->
+        <div class="category" id="input-functions">
+            <div class="category-header">
+                <h2>Input Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- isrbxactive / isgameactive / iswindowactive -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">isrbxactive() / isgameactive() / iswindowactive()</span>
+                        <span class="function-aliases">Aliases: isgameactive, iswindowactive</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if the Roblox window is active.
+                    </div>
+                    <div class="function-example">
+                        <code>if isrbxactive() then<br>&nbsp;&nbsp;print("Roblox is focused")<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- keypress / keytap / keyrelease -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">keypress(keyCode) / keytap(keyCode) / keyrelease(keyCode)</span>
+                        <span class="function-aliases">Aliases: keytap, keyrelease</span>
+                    </div>
+                    <div class="function-description">
+                        Simulates key press/tap/release. KeyCode is the virtual key code.
+                    </div>
+                    <div class="function-example">
+                        <code>keypress(0x41) -- 'A' key<br>wait(0.1)<br>keyrelease(0x41)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- mouse1click / mouse1press / mouse1release -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">mouse1click() / mouse1press() / mouse1release()</span>
+                        <span class="function-aliases">Aliases: mouse1press, mouse1release</span>
+                    </div>
+                    <div class="function-description">
+                        Simulates left mouse button click/press/release.
+                    </div>
+                    <div class="function-example">
+                        <code>mouse1press()<br>wait(0.1)<br>mouse1release()</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- mouse2click / mouse2press / mouse2release -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">mouse2click() / mouse2press() / mouse2release()</span>
+                        <span class="function-aliases">Aliases: mouse2press, mouse2release</span>
+                    </div>
+                    <div class="function-description">
+                        Simulates right mouse button click/press/release.
+                    </div>
+                    <div class="function-example">
+                        <code>mouse2click()</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- mousemoveabs / mousemoverel -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">mousemoveabs(x, y) / mousemoverel(x, y)</span>
+                        <span class="function-aliases">Aliases: mousemoverel</span>
+                    </div>
+                    <div class="function-description">
+                        Moves mouse to absolute screen coordinates or relative to current position.
+                    </div>
+                    <div class="function-example">
+                        <code>mousemoveabs(100, 100) -- move to 100,100<br>mousemoverel(50, 0) -- move right 50 pixels</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- mousescroll -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">mousescroll(amount)</span>
+                    </div>
+                    <div class="function-description">
+                        Simulates mouse wheel scrolling. Positive for up, negative for down.
+                    </div>
+                    <div class="function-example">
+                        <code>mousescroll(5) -- scroll up<br>mousescroll(-5) -- scroll down</code>
                         <button class="copy-btn">Copy</button>
                     </div>
                 </div>
@@ -619,7 +723,7 @@
                 <span>+</span>
             </div>
             <div class="category-content">
-                <!-- getscriptclosure -->
+                <!-- getscriptclosure / getscriptfunction -->
                 <div class="function">
                     <div class="function-header">
                         <span class="function-name">getscriptclosure(script) / getscriptfunction(script)</span>
@@ -659,104 +763,6 @@
                     </div>
                     <div class="function-example">
                         <code>local script = game.Workspace.Script<br>local hash = getscripthash(script)</code>
-                        <button class="copy-btn">Copy</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Input Functions -->
-        <div class="category" id="input-functions">
-            <div class="function-header">
-                <h2>Input Functions</h2>
-                <span>+</span>
-            </div>
-            <div class="category-content">
-                <!-- isrbxactive / isgameactive / iswindowactive -->
-                <div class="function">
-                    <div class="function-header">
-                        <span class="function-name">isrbxactive() / isgameactive() / iswindowactive()</span>
-                        <span class="function-aliases">Aliases: isgameactive, iswindowactive</span>
-                    </div>
-                    <div class="function-description">
-                        Returns true if the Roblox window is active.
-                    </div>
-                    <div class="function-example">
-                        <code>if isrbxactive() then<br>&nbsp;&nbsp;print("Roblox is focused")<br>end</code>
-                        <button class="copy-btn">Copy</button>
-                    </div>
-                </div>
-                
-                <!-- keypress / keytap / keyrelease -->
-                <div class="function">
-                    <div class="function-header">
-                        <span class="function-name">keypress(keyCode) / keytap(keyCode) / keyrelease(keyCode)</span>
-                        <span class="function-aliases">Aliases: keytap, keyrelease</span>
-                    </div>
-                    <div class="function-description">
-                        Simulates key press/tap/release. KeyCode is the virtual key code.
-                    </div>
-                    <div class="function-example">
-                        <code>keypress(0x41) -- 'A' key<br>wait(0.1)<br>keyrelease(0x41)</code>
-                        <button class="copy-btn">Copy</button>
-                    </div>
-                </div>
-                
-                <!-- mouse1click / mouse1press / mouse1release -->
-                <div class="function">
-                    <div class="function-header">
-                        <span class="function-name">mouse1click() / mouse1press() / mouse1release()</span>
-                        <span class="function-aliases">Aliases: mouse1press, mouse1release</span>
-                    </div>
-                    <div class="function-description">
-                        Simulates left mouse button click/press/release.
-                    </div>
-                    <div class="function-example">
-                        <code>mouse1press()<br>wait(0.1)<br>mouse1release()</code>
-                        <button class="copy-btn">Copy</button>
-                    </div>
-                </div>
-                
-                <!-- mouse2click / mouse2press / mouse2release -->
-                <div class="function">
-                    <div class="function-header">
-                        <span class="function-name">mouse2click() / mouse2press() / mouse2release()</span>
-                        <span class="function-aliases">Aliases: mouse2press, mouse2release</span>
-                    </div>
-                    <div class="function-description">
-                        Simulates right mouse button click/press/release.
-                    </div>
-                    <div class="function-example">
-                        <code>mouse2click()</code>
-                        <button class="copy-btn">Copy</button>
-                    </div>
-                </div>
-                
-                <!-- mousemoveabs / mousemoverel -->
-                <div class="function">
-                    <div class="function-header">
-                        <span class="function-name">mousemoveabs(x, y) / mousemoverel(x, y)</span>
-                        <span class="function-aliases">Aliases: mousemoverel</span>
-                    </div>
-                    <div class="function-description">
-                        Moves mouse to absolute screen coordinates or relative to current position.
-                    </div>
-                    <div class="function-example">
-                        <code>mousemoveabs(100, 100) -- move to 100,100<br>mousemoverel(50, 0) -- move right 50 pixels</code>
-                        <button class="copy-btn">Copy</button>
-                    </div>
-                </div>
-                
-                <!-- mousescroll -->
-                <div class="function">
-                    <div class="function-header">
-                        <span class="function-name">mousescroll(amount)</span>
-                    </div>
-                    <div class="function-description">
-                        Simulates mouse wheel scrolling. Positive for up, negative for down.
-                    </div>
-                    <div class="function-example">
-                        <code>mousescroll(5) -- scroll up<br>mousescroll(-5) -- scroll down</code>
                         <button class="copy-btn">Copy</button>
                     </div>
                 </div>
@@ -1882,52 +1888,84 @@
     </footer>
 
     <script>
-        // Toggle category content
-        document.querySelectorAll('.category-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const category = header.parentElement;
-                category.classList.toggle('active');
-                header.querySelector('span').textContent = category.classList.contains('active') ? '-' : '+';
-            });
-        });
-        
-        // Search functionality
-        document.getElementById('search').addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            
-            document.querySelectorAll('.function').forEach(func => {
-                const funcName = func.querySelector('.function-name').textContent.toLowerCase();
-                const funcDesc = func.querySelector('.function-description').textContent.toLowerCase();
-                
-                if (funcName.includes(searchTerm) || funcDesc.includes(searchTerm)) {
-                    func.style.display = 'block';
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle category content
+            document.querySelectorAll('.category-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const category = header.parentElement;
+                    const isActive = category.classList.contains('active');
                     
-                    // Expand parent category
-                    let parent = func.parentElement;
-                    while (parent && !parent.classList.contains('category')) {
-                        parent = parent.parentElement;
+                    // Close all other categories when opening a new one
+                    if (!isActive) {
+                        document.querySelectorAll('.category').forEach(cat => {
+                            cat.classList.remove('active');
+                            cat.querySelector('.category-header span').textContent = '+';
+                        });
                     }
                     
-                    if (parent) {
-                        parent.classList.add('active');
-                        parent.querySelector('.category-header span').textContent = '-';
+                    category.classList.toggle('active');
+                    const span = header.querySelector('span');
+                    if (span) {
+                        span.textContent = category.classList.contains('active') ? '-' : '+';
                     }
-                } else {
-                    func.style.display = 'none';
-                }
-            });
-        });
-        
-        // Copy button functionality
-        document.querySelectorAll('.copy-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const code = btn.parentElement.querySelector('code').textContent;
-                navigator.clipboard.writeText(code).then(() => {
-                    btn.textContent = 'Copied!';
-                    setTimeout(() => {
-                        btn.textContent = 'Copy';
-                    }, 2000);
                 });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('search');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const searchTerm = e.target.value.toLowerCase();
+                    
+                    document.querySelectorAll('.function').forEach(func => {
+                        const funcName = func.querySelector('.function-name')?.textContent.toLowerCase() || '';
+                        const funcDesc = func.querySelector('.function-description')?.textContent.toLowerCase() || '';
+                        
+                        if (funcName.includes(searchTerm) || funcDesc.includes(searchTerm)) {
+                            func.style.display = 'block';
+                            
+                            // Expand parent category
+                            let parent = func.closest('.category');
+                            if (parent) {
+                                parent.classList.add('active');
+                                const span = parent.querySelector('.category-header span');
+                                if (span) {
+                                    span.textContent = '-';
+                                }
+                            }
+                        } else {
+                            func.style.display = 'none';
+                        }
+                    });
+                });
+            }
+            
+            // Copy button functionality
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const codeElement = this.parentElement.querySelector('code');
+                    if (codeElement) {
+                        const code = codeElement.textContent;
+                        navigator.clipboard.writeText(code).then(() => {
+                            const originalText = this.textContent;
+                            this.textContent = 'Copied!';
+                            setTimeout(() => {
+                                this.textContent = originalText;
+                            }, 2000);
+                        }).catch(err => {
+                            console.error('Failed to copy text: ', err);
+                        });
+                    }
+                });
+            });
+            
+            // Initialize all categories as closed except the first one
+            document.querySelectorAll('.category:not(.active)').forEach(category => {
+                const span = category.querySelector('.category-header span');
+                if (span) {
+                    span.textContent = '+';
+                }
             });
         });
     </script>
