@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulse Function Documentation</title>
+    <style>
+        :root {
+            --primary: #7289da;
+            --dark: #36393f;
+            --darker: #2f3136;
+            --light: #f6f6f7;
+            --lighter: #ffffff;
+            --accent: #5865f2;
+            --success: #3ba55c;
+            --warning: #faa61a;
+            --danger: #ed4245;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--darker);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        h1 {
+            color: var(--lighter);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .search-container {
+            margin-bottom: 2rem;
+        }
+        
+        #search {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            border: none;
+            background-color: var(--darker);
+            color: var(--light);
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        #search:focus {
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+        
+        .category {
+            background-color: var(--darker);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-header {
+            background-color: var(--primary);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .category-header h2 {
+            color: var(--lighter);
+        }
+        
+        .category-content {
+            padding: 1.5rem;
+            display: none;
+        }
+        
+        .category.active .category-content {
+            display: block;
+        }
+        
+        .function {
+            background-color: rgba(114, 137, 218, 0.1);
+            border-left: 3px solid var(--primary);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .function-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .function-name {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .function-aliases {
+            color: var(--light);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        .function-description {
+            margin-bottom: 0.8rem;
+        }
+        
+        .function-example {
+            background-color: var(--dark);
+            padding: 0.8rem;
+            border-radius: 5px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+            overflow-x: auto;
+        }
+        
+        .copy-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            float: right;
+        }
+        
+        .copy-btn:hover {
+            background-color: #4752c4;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--darker);
+            margin-top: 2rem;
+            color: var(--light);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .function-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .function-aliases {
+                margin-top: 0.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Impulse Function Documentation</h1>
+        <p class="subtitle">Complete reference for all available functions and aliases</p>
+    </header>
+    
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search for functions...">
+        </div>
+        
+        <!-- Custom Impulse Functions -->
+        <div class="category active" id="custom-impulse">
+            <div class="category-header">
+                <h2>Custom Impulse Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- getpcname -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">Impulse.getpcname()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the name of the current PC.
+                    </div>
+                    <div class="function-example">
+                        <code>local pcName = Impulse.getpcname()<br>print("PC Name:", pcName)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- gethwid -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">Impulse.gethwid()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the hardware ID of the current machine.
+                    </div>
+                    <div class="function-example">
+                        <code>local hwid = Impulse.gethwid()<br>print("HWID:", hwid)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- info -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">Impulse.info()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns general information about the Impulse executor.
+                    </div>
+                    <div class="function-example">
+                        <code>local info = Impulse.info()<br>print("Info:", info)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- isimpulse -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">Impulse.isimpulse()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if the current executor is Impulse.
+                    </div>
+                    <div class="function-example">
+                        <code>if Impulse.isimpulse() then<br>&nbsp;&nbsp;print("Using Impulse!")<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- identify -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">Impulse.identify()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns identification information about the executor.
+                    </div>
+                    <div class="function-example">
+                        <code>local ident = Impulse.identify()<br>print("Identification:", ident)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- isvirtualmachine -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">Impulse.isvirtualmachine()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if the current machine is a virtual machine.
+                    </div>
+                    <div class="function-example">
+                        <code>if Impulse.isvirtualmachine() then<br>&nbsp;&nbsp;print("Running in VM!")<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- isdebuggerpresent -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">Impulse.isdebuggerpresent()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if a debugger is attached to the process.
+                    </div>
+                    <div class="function-example">
+                        <code>if Impulse.isdebuggerpresent() then<br>&nbsp;&nbsp;print("Debugger detected!")<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- tip -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">Impulse.tip()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns a random tip about using Impulse.
+                    </div>
+                    <div class="function-example">
+                        <code>local tip = Impulse.tip()<br>print("Tip:", tip)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- version -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">Impulse.version()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the current version of Impulse.
+                    </div>
+                    <div class="function-example">
+                        <code>local version = Impulse.version()<br>print("Version:", version)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- detections -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">Impulse.detections()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns information about current detections.
+                    </div>
+                    <div class="function-example">
+                        <code>local detections = Impulse.detections()<br>print("Detections:", detections)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- discord / invite -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">Impulse.discord() / Impulse.invite()</span>
+                        <span class="function-aliases">Aliases: invite</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the Discord invite link for Impulse.
+                    </div>
+                    <div class="function-example">
+                        <code>local discordLink = Impulse.discord()<br>print("Join our Discord:", discordLink)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Environment Functions -->
+        <div class="category" id="environment-functions">
+            <div class="category-header">
+                <h2>Environment Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- getgenv -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getgenv()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the global environment table.
+                    </div>
+                    <div class="function-example">
+                        <code>local genv = getgenv()<br>genv.myGlobalVar = "Hello"</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- gettenv -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">gettenv()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the thread environment table.
+                    </div>
+                    <div class="function-example">
+                        <code>local tenv = gettenv()<br>tenv.myThreadVar = "World"</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getrenv -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getrenv()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the Roblox environment table.
+                    </div>
+                    <div class="function-example">
+                        <code>local renv = getrenv()<br>print("Roblox environment:", renv)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getsenv -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getsenv(script)</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the environment of the specified script.
+                    </div>
+                    <div class="function-example">
+                        <code>local script = game:GetService("Script")<br>local senv = getsenv(script)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getgc -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getgc([includeTables])</span>
+                    </div>
+                    <div class="function-description">
+                        Returns a table of all GC objects. If includeTables is true, includes tables in the results.
+                    </div>
+                    <div class="function-example">
+                        <code>local allObjects = getgc()<br>for i, obj in pairs(allObjects) do<br>&nbsp;&nbsp;-- Do something with obj<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Script Execution Functions -->
+        <div class="category" id="script-execution">
+            <div class="category-header">
+                <h2>Script Execution Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- loadstring / load / runscript -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">loadstring(code) / load(code) / runscript(code)</span>
+                        <span class="function-aliases">Aliases: load, runscript</span>
+                    </div>
+                    <div class="function-description">
+                        Loads and executes the given Lua code string.
+                    </div>
+                    <div class="function-example">
+                        <code>local fn = loadstring("print('Hello World')")<br>fn()</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- queue_on_teleport / queueonteleport -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">queue_on_teleport(code) / queueonteleport(code)</span>
+                        <span class="function-aliases">Aliases: queueonteleport</span>
+                    </div>
+                    <div class="function-description">
+                        Queues code to be executed after teleporting to a new place.
+                    </div>
+                    <div class="function-example">
+                        <code>queue_on_teleport([[print("This will run after teleporting")]])</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Instance Functions -->
+        <div class="category" id="instance-functions">
+            <div class="category-header">
+                <h2>Instance Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- getinstances -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getinstances()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns a table of all instances in the game.
+                    </div>
+                    <div class="function-example">
+                        <code>local allInstances = getinstances()<br>for i, inst in pairs(allInstances) do<br>&nbsp;&nbsp;print(inst:GetFullName())<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getnilinstances -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getnilinstances()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns a table of all instances that are parented to nil.
+                    </div>
+                    <div class="function-example">
+                        <code>local nilInstances = getnilinstances()<br>for i, inst in pairs(nilInstances) do<br>&nbsp;&nbsp;print(inst:GetFullName())<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- fireclickdetector -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">fireclickdetector(clickDetector[, distance])</span>
+                    </div>
+                    <div class="function-description">
+                        Fires the specified ClickDetector. Optional distance parameter.
+                    </div>
+                    <div class="function-example">
+                        <code>local detector = game.Workspace.Part.ClickDetector<br>fireclickdetector(detector, 10)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- firetouchinterest -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">firetouchinterest(part, partToTouch, touch)]</span>
+                    </div>
+                    <div class="function-description">
+                        Fires a touch interest between two parts. Touch is 0 for begin and 1 for end.
+                    </div>
+                    <div class="function-example">
+                        <code>local part1 = game.Workspace.Part1<br>local part2 = game.Workspace.Part2<br>firetouchinterest(part1, part2, 0) -- begin touch<br>wait(1)<br>firetouchinterest(part1, part2, 1) -- end touch</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- fireproximityprompt -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">fireproximityprompt(proximityPrompt[, distance])</span>
+                    </div>
+                    <div class="function-description">
+                        Fires the specified ProximityPrompt. Optional distance parameter.
+                    </div>
+                    <div class="function-example">
+                        <code>local prompt = game.Workspace.Part.ProximityPrompt<br>fireproximityprompt(prompt)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- gethui -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">gethui()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the CoreGui service (same as game:GetService("CoreGui")).
+                    </div>
+                    <div class="function-example">
+                        <code>local coreGui = gethui()<br>print(coreGui:GetChildren())</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getcallbackvalue -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getcallbackvalue(callback)</span>
+                    </div>
+                    <div class="function-description">
+                        Gets the value returned by a callback function.
+                    </div>
+                    <div class="function-example">
+                        <code>local callback = function() return "Hello" end<br>local value = getcallbackvalue(callback)<br>print(value) -- "Hello"</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- cloneref -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">cloneref(instance)</span>
+                    </div>
+                    <div class="function-description">
+                        Creates a clone of the reference that bypasses filtering.
+                    </div>
+                    <div class="function-example">
+                        <code>local part = game.Workspace.Part<br>local clone = cloneref(part)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- compareinstances -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">compareinstances(instance1, instance2)</span>
+                    </div>
+                    <div class="function-description">
+                        Compares two instances to see if they reference the same object.
+                    </div>
+                    <div class="function-example">
+                        <code>local part1 = game.Workspace.Part1<br>local part2 = game.Workspace.Part2<br>print(compareinstances(part1, part2)) -- false</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Script Functions -->
+        <div class="category" id="script-functions">
+            <div class="category-header">
+                <h2>Script Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- getscriptclosure -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getscriptclosure(script) / getscriptfunction(script)</span>
+                        <span class="function-aliases">Aliases: getscriptfunction</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the closure of the specified script.
+                    </div>
+                    <div class="function-example">
+                        <code>local script = game.Workspace.Script<br>local closure = getscriptclosure(script)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getscriptbytecode / dumpstring -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getscriptbytecode(script) / dumpstring(script)</span>
+                        <span class="function-aliases">Aliases: dumpstring</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the bytecode of the specified script.
+                    </div>
+                    <div class="function-example">
+                        <code>local script = game.Workspace.Script<br>local bytecode = getscriptbytecode(script)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getscripthash -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getscripthash(script)</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the hash of the specified script.
+                    </div>
+                    <div class="function-example">
+                        <code>local script = game.Workspace.Script<br>local hash = getscripthash(script)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Input Functions -->
+        <div class="category" id="input-functions">
+            <div class="function-header">
+                <h2>Input Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- isrbxactive / isgameactive / iswindowactive -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">isrbxactive() / isgameactive() / iswindowactive()</span>
+                        <span class="function-aliases">Aliases: isgameactive, iswindowactive</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if the Roblox window is active.
+                    </div>
+                    <div class="function-example">
+                        <code>if isrbxactive() then<br>&nbsp;&nbsp;print("Roblox is focused")<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- keypress / keytap / keyrelease -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">keypress(keyCode) / keytap(keyCode) / keyrelease(keyCode)</span>
+                        <span class="function-aliases">Aliases: keytap, keyrelease</span>
+                    </div>
+                    <div class="function-description">
+                        Simulates key press/tap/release. KeyCode is the virtual key code.
+                    </div>
+                    <div class="function-example">
+                        <code>keypress(0x41) -- 'A' key<br>wait(0.1)<br>keyrelease(0x41)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- mouse1click / mouse1press / mouse1release -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">mouse1click() / mouse1press() / mouse1release()</span>
+                        <span class="function-aliases">Aliases: mouse1press, mouse1release</span>
+                    </div>
+                    <div class="function-description">
+                        Simulates left mouse button click/press/release.
+                    </div>
+                    <div class="function-example">
+                        <code>mouse1press()<br>wait(0.1)<br>mouse1release()</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- mouse2click / mouse2press / mouse2release -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">mouse2click() / mouse2press() / mouse2release()</span>
+                        <span class="function-aliases">Aliases: mouse2press, mouse2release</span>
+                    </div>
+                    <div class="function-description">
+                        Simulates right mouse button click/press/release.
+                    </div>
+                    <div class="function-example">
+                        <code>mouse2click()</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- mousemoveabs / mousemoverel -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">mousemoveabs(x, y) / mousemoverel(x, y)</span>
+                        <span class="function-aliases">Aliases: mousemoverel</span>
+                    </div>
+                    <div class="function-description">
+                        Moves mouse to absolute screen coordinates or relative to current position.
+                    </div>
+                    <div class="function-example">
+                        <code>mousemoveabs(100, 100) -- move to 100,100<br>mousemoverel(50, 0) -- move right 50 pixels</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- mousescroll -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">mousescroll(amount)</span>
+                    </div>
+                    <div class="function-description">
+                        Simulates mouse wheel scrolling. Positive for up, negative for down.
+                    </div>
+                    <div class="function-example">
+                        <code>mousescroll(5) -- scroll up<br>mousescroll(-5) -- scroll down</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cache Functions -->
+        <div class="category" id="cache-functions">
+            <div class="category-header">
+                <h2>Cache Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- cache.invalidate -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">cache.invalidate(instance)</span>
+                    </div>
+                    <div class="function-description">
+                        Invalidates the cache for the specified instance.
+                    </div>
+                    <div class="function-example">
+                        <code>local part = game.Workspace.Part<br>cache.invalidate(part)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- cache.iscached -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">cache.iscached(instance)</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if the instance is cached.
+                    </div>
+                    <div class="function-example">
+                        <code>local part = game.Workspace.Part<br>print(cache.iscached(part))</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- cache.replace -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">cache.replace(instance, newInstance)</span>
+                    </div>
+                    <div class="function-description">
+                        Replaces an instance in the cache with a new one.
+                    </div>
+                    <div class="function-example">
+                        <code>local part1 = game.Workspace.Part1<br>local part2 = game.Workspace.Part2<br>cache.replace(part1, part2)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Metatable Functions -->
+        <div class="category" id="metatable-functions">
+            <div class="category-header">
+                <h2>Metatable Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- getrawmetatable -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getrawmetatable(table)</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the metatable of the given table, bypassing any __metatable protection.
+                    </div>
+                    <div class="function-example">
+                        <code>local mt = getrawmetatable(game)<br>print(mt)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- setrawmetatable -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">setrawmetatable(table, metatable)</span>
+                    </div>
+                    <div class="function-description">
+                        Sets the metatable of the given table, bypassing any __metatable protection.
+                    </div>
+                    <div class="function-example">
+                        <code>local t = {}<br>local mt = {}<br>setrawmetatable(t, mt)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- isreadonly -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">isreadonly(table)</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if the table is read-only.
+                    </div>
+                    <div class="function-example">
+                        <code>print(isreadonly(game))</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- setreadonly -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">setreadonly(table, readonly)</span>
+                    </div>
+                    <div class="function-description">
+                        Sets whether a table is read-only.
+                    </div>
+                    <div class="function-example">
+                        <code>local t = {}<br>setreadonly(t, true)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getnamecallmethod -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getnamecallmethod()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the name of the current namecall method.
+                    </div>
+                    <div class="function-example">
+                        <code>local oldnc; oldnc = hookmetamethod(game, "__namecall", function(...)<br>&nbsp;&nbsp;local method = getnamecallmethod()<br>&nbsp;&nbsp;print("Namecall:", method)<br>&nbsp;&nbsp;return oldnc(...)<br>end)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- hookmetamethod / hookfunction -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">hookmetamethod(table, method, hook) / hookfunction(func, hook)</span>
+                        <span class="function-aliases">Aliases: hookfunction</span>
+                    </div>
+                    <div class="function-description">
+                        Hooks a metamethod or function to replace its behavior.
+                    </div>
+                    <div class="function-example">
+                        <code>-- Hook __index metamethod<br>local old; old = hookmetamethod(game, "__index", function(t, k)<br>&nbsp;&nbsp;print("Indexing:", k)<br>&nbsp;&nbsp;return old(t, k)<br>end)<br><br>-- Hook a function<br>local oldPrint = hookfunction(print, function(...)<br>&nbsp;&nbsp;print("Intercepted print")<br>&nbsp;&nbsp;return oldPrint(...)<br>end)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- checkcaller -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">checkcaller()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if the current caller is from the executor.
+                    </div>
+                    <div class="function-example">
+                        <code>if checkcaller() then<br>&nbsp;&nbsp;print("Called from executor")<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- clonefunction -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">clonefunction(func)</span>
+                    </div>
+                    <div class="function-description">
+                        Creates a clone of the given function.
+                    </div>
+                    <div class="function-example">
+                        <code>local function original() print("Original") end<br>local clone = clonefunction(original)<br>clone() -- "Original"</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- newcclosure -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">newcclosure(func)</span>
+                    </div>
+                    <div class="function-description">
+                        Converts a function to a C closure.
+                    </div>
+                    <div class="function-example">
+                        <code>local function myFunc() end<br>local cfunc = newcclosure(myFunc)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- iscclosure -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">iscclosure(func)</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if the function is a C closure.
+                    </div>
+                    <div class="function-example">
+                        <code>local function myFunc() end<br>print(iscclosure(myFunc)) -- false<br>print(iscclosure(newcclosure(myFunc))) -- true</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- isexecutorclosure -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">isexecutorclosure(func)</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if the function is an executor closure.
+                    </div>
+                    <div class="function-example">
+                        <code>local function myFunc() end<br>print(isexecutorclosure(myFunc)) -- false</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- islclosure -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">islclosure(func)</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if the function is a Lua closure.
+                    </div>
+                    <div class="function-example">
+                        <code>local function myFunc() end<br>print(islclosure(myFunc)) -- true<br>print(islclosure(newcclosure(myFunc))) -- false</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getscripts -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getscripts()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns a table of all scripts in the game.
+                    </div>
+                    <div class="function-example">
+                        <code>local scripts = getscripts()<br>for i, script in pairs(scripts) do<br>&nbsp;&nbsp;print(script:GetFullName())<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getrunningscripts -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getrunningscripts()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns a table of all currently running scripts.
+                    </div>
+                    <div class="function-example">
+                        <code>local running = getrunningscripts()<br>for i, script in pairs(running) do<br>&nbsp;&nbsp;print(script:GetFullName())<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getloadedmodules -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getloadedmodules()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns a table of all loaded modules.
+                    </div>
+                    <div class="function-example">
+                        <code>local modules = getloadedmodules()<br>for i, module in pairs(modules) do<br>&nbsp;&nbsp;print(module:GetFullName())<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- isscriptable -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">isscriptable(instance, property)</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if the property of the instance is scriptable.
+                    </div>
+                    <div class="function-example">
+                        <code>local part = game.Workspace.Part<br>print(isscriptable(part, "Transparency")) -- true</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- setscriptable -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">setscriptable(instance, property, scriptable)</span>
+                    </div>
+                    <div class="function-description">
+                        Sets whether a property of an instance is scriptable.
+                    </div>
+                    <div class="function-example">
+                        <code>local part = game.Workspace.Part<br>setscriptable(part, "Transparency", true)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- gethiddenproperty -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">gethiddenproperty(instance, property)</span>
+                    </div>
+                    <div class="function-description">
+                        Gets the value of a hidden property.
+                    </div>
+                    <div class="function-example">
+                        <code>local player = game.Players.LocalPlayer<br>local health = gethiddenproperty(player, "Health")<br>print(health)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- sethiddenproperty -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">sethiddenproperty(instance, property, value)</span>
+                    </div>
+                    <div class="function-description">
+                        Sets the value of a hidden property.
+                    </div>
+                    <div class="function-example">
+                        <code>local player = game.Players.LocalPlayer<br>sethiddenproperty(player, "Health", 100)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Debug Functions -->
+        <div class="category" id="debug-functions">
+            <div class="category-header">
+                <h2>Debug Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- getreg / getregistry -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getreg() / getregistry()</span>
+                        <span class="function-aliases">Aliases: getregistry</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the Lua registry table.
+                    </div>
+                    <div class="function-example">
+                        <code>local reg = getreg()<br>for k, v in pairs(reg) do<br>&nbsp;&nbsp;-- Do something with registry entries<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getproto -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getproto(func, index)</span>
+                    </div>
+                    <div class="function-description">
+                        Gets the prototype at the given index from a function.
+                    </div>
+                    <div class="function-example">
+                        <code>local function test() end<br>local proto = getproto(test, 0)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getprotos -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getprotos(func)</span>
+                    </div>
+                    <div class="function-description">
+                        Gets all prototypes from a function.
+                    </div>
+                    <div class="function-example">
+                        <code>local function test() end<br>local protos = getprotos(test)<br>for i, proto in ipairs(protos) do<br>&nbsp;&nbsp;-- Do something with prototypes<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getstack -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getstack([level])</span>
+                    </div>
+                    <div class="function-description">
+                        Gets the call stack at the given level (default 0).
+                    </div>
+                    <div class="function-example">
+                        <code>local function test()<br>&nbsp;&nbsp;local stack = getstack(1)<br>&nbsp;&nbsp;print(stack)<br>end<br>test()</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getinfo -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getinfo([func[, what]])</span>
+                    </div>
+                    <div class="function-description">
+                        Gets information about a function or the current function if none is provided.
+                    </div>
+                    <div class="function-example">
+                        <code>local function test() end<br>local info = getinfo(test)<br>print(info.name, info.linedefined, info.lastlinedefined)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getupvalue -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getupvalue(func, index)</span>
+                    </div>
+                    <div class="function-description">
+                        Gets the upvalue at the given index from a function.
+                    </div>
+                    <div class="function-example">
+                        <code>local upval = "hello"<br>local function test() print(upval) end<br>local name, value = getupvalue(test, 1)<br>print(name, value) -- "upval", "hello"</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getupvalues -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getupvalues(func)</span>
+                    </div>
+                    <div class="function-description">
+                        Gets all upvalues from a function.
+                    </div>
+                    <div class="function-example">
+                        <code>local upval1 = "hello"<br>local upval2 = "world"<br>local function test() print(upval1, upval2) end<br>local upvalues = getupvalues(test)<br>for name, value in pairs(upvalues) do<br>&nbsp;&nbsp;print(name, value)<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getconstant -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getconstant(func, index)</span>
+                    </div>
+                    <div class="function-description">
+                        Gets the constant at the given index from a function.
+                    </div>
+                    <div class="function-example">
+                        <code>local function test() print("constant") end<br>local constant = getconstant(test, 1)<br>print(constant) -- "constant"</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getconstants -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getconstants(func)</span>
+                    </div>
+                    <div class="function-description">
+                        Gets all constants from a function.
+                    </div>
+                    <div class="function-example">
+                        <code>local function test() print("hello", "world") end<br>local constants = getconstants(test)<br>for i, constant in ipairs(constants) do<br>&nbsp;&nbsp;print(constant)<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- setconstant -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">setconstant(func, index, value)</span>
+                    </div>
+                    <div class="function-description">
+                        Sets the constant at the given index in a function.
+                    </div>
+                    <div class="function-example">
+                        <code>local function test() print("hello") end<br>setconstant(test, 1, "world")<br>test() -- prints "world"</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- setstack -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">setstack(level, value)</span>
+                    </div>
+                    <div class="function-description">
+                        Sets the call stack at the given level.
+                    </div>
+                    <div class="function-example">
+                        <code>-- Advanced usage only</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- setupvalue -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">setupvalue(func, index, value)</span>
+                    </div>
+                    <div class="function-description">
+                        Sets the upvalue at the given index in a function.
+                    </div>
+                    <div class="function-example">
+                        <code>local upval = "hello"<br>local function test() print(upval) end<br>setupvalue(test, 1, "world")<br>test() -- prints "world"</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Filesystem Functions -->
+        <div class="category" id="filesystem-functions">
+            <div class="category-header">
+                <h2>Filesystem Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- getcustomasset -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getcustomasset(path)</span>
+                    </div>
+                    <div class="function-description">
+                        Gets the path to a custom asset in the executor's folder.
+                    </div>
+                    <div class="function-example">
+                        <code>local assetPath = getcustomasset("image.png")</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- writefile -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">writefile(path, content)</span>
+                    </div>
+                    <div class="function-description">
+                        Writes content to a file at the specified path.
+                    </div>
+                    <div class="function-example">
+                        <code>writefile("test.txt", "Hello World")</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- readfile -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">readfile(path)</span>
+                    </div>
+                    <div class="function-description">
+                        Reads the content of a file at the specified path.
+                    </div>
+                    <div class="function-example">
+                        <code>local content = readfile("test.txt")<br>print(content)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- makefolder -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">makefolder(name)</span>
+                    </div>
+                    <div class="function-description">
+                        Creates a new folder with the specified name.
+                    </div>
+                    <div class="function-example">
+                        <code>makefolder("MyFolder")</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- isfolder -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">isfolder(path)</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if the path is a folder.
+                    </div>
+                    <div class="function-example">
+                        <code>if isfolder("MyFolder") then<br>&nbsp;&nbsp;print("Folder exists")<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- delfile -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">delfile(path)</span>
+                    </div>
+                    <div class="function-description">
+                        Deletes the file at the specified path.
+                    </div>
+                    <div class="function-example">
+                        <code>delfile("test.txt")</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- appendfile -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">appendfile(path, content)</span>
+                    </div>
+                    <div class="function-description">
+                        Appends content to a file at the specified path.
+                    </div>
+                    <div class="function-example">
+                        <code>appendfile("test.txt", "\nMore content")</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- delfolder -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">delfolder(path)</span>
+                    </div>
+                    <div class="function-description">
+                        Deletes the folder at the specified path.
+                    </div>
+                    <div class="function-example">
+                        <code>delfolder("MyFolder")</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- isfile -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">isfile(path)</span>
+                    </div>
+                    <div class="function-description">
+                        Returns true if the path is a file.
+                    </div>
+                    <div class="function-example">
+                        <code>if isfile("test.txt") then<br>&nbsp;&nbsp;print("File exists")<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- listfiles -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">listfiles(path)</span>
+                    </div>
+                    <div class="function-description">
+                        Returns a table of files in the specified folder.
+                    </div>
+                    <div class="function-example">
+                        <code>local files = listfiles("")<br>for i, file in ipairs(files) do<br>&nbsp;&nbsp;print(file)<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- loadfile -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">loadfile(path)</span>
+                    </div>
+                    <div class="function-description">
+                        Loads and executes a Lua file from the specified path.
+                    </div>
+                    <div class="function-example">
+                        <code>local fn = loadfile("script.lua")<br>fn()</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cryptography Functions -->
+        <div class="category" id="cryptography-functions">
+            <div class="category-header">
+                <h2>Cryptography Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- base64_encode / base64_decode -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">base64_encode(data) / base64_decode(data)</span>
+                        <span class="function-aliases">Aliases: base64_decode</span>
+                    </div>
+                    <div class="function-description">
+                        Encodes/decodes data using Base64.
+                    </div>
+                    <div class="function-example">
+                        <code>local encoded = base64_encode("Hello")<br>local decoded = base64_decode(encoded)<br>print(decoded) -- "Hello"</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- base64.encode / base64.decode -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">base64.encode(data) / base64.decode(data)</span>
+                        <span class="function-aliases">Aliases: base64.decode</span>
+                    </div>
+                    <div class="function-description">
+                        Alternative syntax for Base64 encoding/decoding.
+                    </div>
+                    <div class="function-example">
+                        <code>local encoded = base64.encode("World")<br>local decoded = base64.decode(encoded)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- crypt.encrypt / crypt.decrypt -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">crypt.encrypt(data, key) / crypt.decrypt(data, key)</span>
+                        <span class="function-aliases">Aliases: crypt.decrypt</span>
+                    </div>
+                    <div class="function-description">
+                        Encrypts/decrypts data using the specified key.
+                    </div>
+                    <div class="function-example">
+                        <code>local key = "secretkey"<br>local encrypted = crypt.encrypt("Data", key)<br>local decrypted = crypt.decrypt(encrypted, key)<br>print(decrypted) -- "Data"</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- crypt.generatebytes -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">crypt.generatebytes(length)</span>
+                    </div>
+                    <div class="function-description">
+                        Generates random bytes of the specified length.
+                    </div>
+                    <div class="function-example">
+                        <code>local randomBytes = crypt.generatebytes(16)<br>print(randomBytes)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- crypt.generatekey -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">crypt.generatekey()</span>
+                    </div>
+                    <div class="function-description">
+                        Generates a random encryption key.
+                    </div>
+                    <div class="function-example">
+                        <code>local key = crypt.generatekey()<br>print(key)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- crypt.hash -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">crypt.hash(data, algorithm)</span>
+                    </div>
+                    <div class="function-description">
+                        Hashes data using the specified algorithm (e.g., "md5", "sha1", "sha256").
+                    </div>
+                    <div class="function-example">
+                        <code>local hash = crypt.hash("password", "sha256")<br>print(hash)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Web Functions -->
+        <div class="category" id="web-functions">
+            <div class="category-header">
+                <h2>Web Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- WebSocket.connect -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">WebSocket.connect(url)</span>
+                    </div>
+                    <div class="function-description">
+                        Connects to a WebSocket server at the specified URL.
+                    </div>
+                    <div class="function-example">
+                        <code>local ws = WebSocket.connect("ws://example.com")<br>ws.OnMessage:Connect(function(message)<br>&nbsp;&nbsp;print("Received:", message)<br>end)<br>ws:Send("Hello")</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- HttpGet -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">HttpGet(url)</span>
+                    </div>
+                    <div class="function-description">
+                        Performs a GET request to the specified URL.
+                    </div>
+                    <div class="function-example">
+                        <code>local response = HttpGet("https://example.com")<br>print(response)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- http.request / request / http_request -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">http.request(options) / request(options) / http_request(options)</span>
+                        <span class="function-aliases">Aliases: request, http_request</span>
+                    </div>
+                    <div class="function-description">
+                        Performs an HTTP request with the specified options (method, url, headers, body).
+                    </div>
+                    <div class="function-example">
+                        <code>local response = http.request({<br>&nbsp;&nbsp;Url = "https://example.com",<br>&nbsp;&nbsp;Method = "GET"<br>})<br>print(response.Body)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Console Functions -->
+        <div class="category" id="console-functions">
+            <div class="category-header">
+                <h2>Console Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- consolecreate / rconsolecreate -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">consolecreate() / rconsolecreate()</span>
+                        <span class="function-aliases">Aliases: rconsolecreate</span>
+                    </div>
+                    <div class="function-description">
+                        Creates a console window.
+                    </div>
+                    <div class="function-example">
+                        <code>consolecreate()</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- consoleclear / rconsoleclear -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">consoleclear() / rconsoleclear()</span>
+                        <span class="function-aliases">Aliases: rconsoleclear</span>
+                    </div>
+                    <div class="function-description">
+                        Clears the console.
+                    </div>
+                    <div class="function-example">
+                        <code>consoleclear()</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- consoledestroy / rconsoledestroy -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">consoledestroy() / rconsoledestroy()</span>
+                        <span class="function-aliases">Aliases: rconsoledestroy</span>
+                    </div>
+                    <div class="function-description">
+                        Destroys the console window.
+                    </div>
+                    <div class="function-example">
+                        <code>consoledestroy()</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- consoleprint / rconsoleprint -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">consoleprint(text) / rconsoleprint(text)</span>
+                        <span class="function-aliases">Aliases: rconsoleprint</span>
+                    </div>
+                    <div class="function-description">
+                        Prints text to the console.
+                    </div>
+                    <div class="function-example">
+                        <code>consoleprint("Hello Console!")</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- consoleinfo / rconsoleinfo -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">consoleinfo(text) / rconsoleinfo(text)</span>
+                        <span class="function-aliases">Aliases: rconsoleinfo</span>
+                    </div>
+                    <div class="function-description">
+                        Prints info text to the console (usually in a different color).
+                    </div>
+                    <div class="function-example">
+                        <code>consoleinfo("This is information")</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- consolewarn / rconsolewarn -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">consolewarn(text) / rconsolewarn(text)</span>
+                        <span class="function-aliases">Aliases: rconsolewarn</span>
+                    </div>
+                    <div class="function-description">
+                        Prints warning text to the console (usually in yellow).
+                    </div>
+                    <div class="function-example">
+                        <code>consolewarn("This is a warning")</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- consoleerr / rconsoleerr -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">consoleerr(text) / rconsoleerr(text)</span>
+                        <span class="function-aliases">Aliases: rconsoleerr</span>
+                    </div>
+                    <div class="function-description">
+                        Prints error text to the console (usually in red).
+                    </div>
+                    <div class="function-example">
+                        <code>consoleerr("This is an error")</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- consoleinput / rconsoleinput -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">consoleinput([prompt]) / rconsoleinput([prompt])</span>
+                        <span class="function-aliases">Aliases: rconsoleinput</span>
+                    </div>
+                    <div class="function-description">
+                        Gets input from the console with an optional prompt.
+                    </div>
+                    <div class="function-example">
+                        <code>local input = consoleinput("Enter something: ")<br>print("You entered:", input)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- consoleinputasync / rconsoleinputasync -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">consoleinputasync([prompt]) / rconsoleinputasync([prompt])</span>
+                        <span class="function-aliases">Aliases: rconsoleinputasync</span>
+                    </div>
+                    <div class="function-description">
+                        Gets input from the console asynchronously with an optional prompt.
+                    </div>
+                    <div class="function-example">
+                        <code>consoleinputasync("Enter something: ")<br>local input = consoleinputasync()<br>print("You entered:", input)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- consolename / rconsolename / consolesettitle / rconsolesettitle -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">consolename(title) / rconsolename(title) / consolesettitle(title) / rconsolesettitle(title)</span>
+                        <span class="function-aliases">Aliases: rconsolename, consolesettitle, rconsolesettitle</span>
+                    </div>
+                    <div class="function-description">
+                        Sets the title of the console window.
+                    </div>
+                    <div class="function-example">
+                        <code>consolename("My Console")</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Miscellaneous Functions -->
+        <div class="category" id="misc-functions">
+            <div class="category-header">
+                <h2>Miscellaneous Functions</h2>
+                <span>+</span>
+            </div>
+            <div class="category-content">
+                <!-- getconnections -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getconnections(signal)</span>
+                    </div>
+                    <div class="function-description">
+                        Returns a table of connections to the specified signal.
+                    </div>
+                    <div class="function-example">
+                        <code>local connections = getconnections(game.Players.PlayerAdded)<br>for i, conn in ipairs(connections) do<br>&nbsp;&nbsp;print(conn.Function)<br>end</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- identifyexecutor / whatexecutor / getexecutorname -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">identifyexecutor() / whatexecutor() / getexecutorname()</span>
+                        <span class="function-aliases">Aliases: whatexecutor, getexecutorname</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the name of the current executor.
+                    </div>
+                    <div class="function-example">
+                        <code>print(identifyexecutor()) -- "Impulse"</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getexecutorversion -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getexecutorversion()</span>
+                    </div>
+                    <div class="function-description">
+                        Returns the version of the current executor.
+                    </div>
+                    <div class="function-example">
+                        <code>print(getexecutorversion()) -- e.g., "1.0.0"</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- setfpscap -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">setfpscap(fps)</span>
+                    </div>
+                    <div class="function-description">
+                        Sets the FPS cap for the game.
+                    </div>
+                    <div class="function-example">
+                        <code>setfpscap(60) -- Limit to 60 FPS</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- getfpscap -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">getfpscap()</span>
+                    </div>
+                    <div class="function-description">
+                        Gets the current FPS cap.
+                    </div>
+                    <div class="function-example">
+                        <code>print(getfpscap())</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- lz4compress / lz4decompress -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">lz4compress(data) / lz4decompress(data)</span>
+                        <span class="function-aliases">Aliases: lz4decompress</span>
+                    </div>
+                    <div class="function-description">
+                        Compresses/decompresses data using LZ4 algorithm.
+                    </div>
+                    <div class="function-example">
+                        <code>local compressed = lz4compress("Hello World")<br>local decompressed = lz4decompress(compressed)<br>print(decompressed) -- "Hello World"</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- messagebox -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">messagebox(title, text, buttons)</span>
+                    </div>
+                    <div class="function-description">
+                        Shows a message box with the specified title, text, and buttons.
+                    </div>
+                    <div class="function-example">
+                        <code>messagebox("Alert", "This is a message", {"OK", "Cancel"})</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- setclipboard / toclipboard -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">setclipboard(text) / toclipboard(text)</span>
+                        <span class="function-aliases">Aliases: toclipboard</span>
+                    </div>
+                    <div class="function-description">
+                        Sets the clipboard text.
+                    </div>
+                    <div class="function-example">
+                        <code>setclipboard("Copied text")</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+                
+                <!-- require -->
+                <div class="function">
+                    <div class="function-header">
+                        <span class="function-name">require(module)</span>
+                    </div>
+                    <div class="function-description">
+                        Requires a module (custom implementation).
+                    </div>
+                    <div class="function-example">
+                        <code>local module = require(game:GetService("ReplicatedStorage").Module)</code>
+                        <button class="copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Impulse Function Documentation - All rights reserved</p>
+    </footer>
+
+    <script>
+        // Toggle category content
+        document.querySelectorAll('.category-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const category = header.parentElement;
+                category.classList.toggle('active');
+                header.querySelector('span').textContent = category.classList.contains('active') ? '-' : '+';
+            });
+        });
+        
+        // Search functionality
+        document.getElementById('search').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            document.querySelectorAll('.function').forEach(func => {
+                const funcName = func.querySelector('.function-name').textContent.toLowerCase();
+                const funcDesc = func.querySelector('.function-description').textContent.toLowerCase();
+                
+                if (funcName.includes(searchTerm) || funcDesc.includes(searchTerm)) {
+                    func.style.display = 'block';
+                    
+                    // Expand parent category
+                    let parent = func.parentElement;
+                    while (parent && !parent.classList.contains('category')) {
+                        parent = parent.parentElement;
+                    }
+                    
+                    if (parent) {
+                        parent.classList.add('active');
+                        parent.querySelector('.category-header span').textContent = '-';
+                    }
+                } else {
+                    func.style.display = 'none';
+                }
+            });
+        });
+        
+        // Copy button functionality
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const code = btn.parentElement.querySelector('code').textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    btn.textContent = 'Copied!';
+                    setTimeout(() => {
+                        btn.textContent = 'Copy';
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
