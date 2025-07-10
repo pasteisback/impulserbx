@@ -1,3 +1,7 @@
 /imp/*.luau
   Content-Type: text/plain
   Content-Disposition: inline
+
+/imp/*.html
+  Content-Type: text/plain
+  Content-Disposition: inline
